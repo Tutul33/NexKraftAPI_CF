@@ -91,6 +91,11 @@ namespace API.Utility
                 }
             }
         }
+        /// <summary>
+        /// JOSN Key Validity Check
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static bool IsEmptyOrInvalid(string token)
         {
             if (string.IsNullOrEmpty(token))
