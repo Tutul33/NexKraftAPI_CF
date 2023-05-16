@@ -249,12 +249,7 @@ namespace API.DataAccess.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserLoginLoginId")
-                        .HasColumnType("int");
-
                     b.HasKey("UserRoleId");
-
-                    b.HasIndex("UserLoginLoginId");
 
                     b.ToTable("UserRoles");
                 });
@@ -286,13 +281,6 @@ namespace API.DataAccess.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("API.DataAccess.ORM.CodeFirst.UserRole", b =>
-                {
-                    b.HasOne("API.DataAccess.ORM.CodeFirst.UserLogin", null)
-                        .WithMany("UserRoles")
-                        .HasForeignKey("UserLoginLoginId");
-                });
-
             modelBuilder.Entity("API.DataAccess.ORM.CodeFirst.Customer", b =>
                 {
                     b.Navigation("UserLogins");
@@ -306,11 +294,6 @@ namespace API.DataAccess.Migrations
             modelBuilder.Entity("API.DataAccess.ORM.CodeFirst.Module", b =>
                 {
                     b.Navigation("Menus");
-                });
-
-            modelBuilder.Entity("API.DataAccess.ORM.CodeFirst.UserLogin", b =>
-                {
-                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }

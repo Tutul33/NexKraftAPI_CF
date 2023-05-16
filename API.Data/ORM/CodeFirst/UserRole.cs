@@ -14,6 +14,5 @@ namespace API.DataAccess.ORM.CodeFirst
         public int RoleId { get; set; }
         public int LoginId { get; set; }
         //public virtual UserLogin? UserLogin { get; set; }
-        //public virtual Role? Role { get; set; }
     }
 }

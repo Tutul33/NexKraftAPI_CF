@@ -35,7 +35,8 @@ StaticInfos.FileUploadPath = _configuration.GetValue<string>("FileUploadPath");
 //builder.Services.AddTransient(_ => new MsSqlDbConnection(StaticInfos.MsSqlConnectionString));
 //builder.Services.AddTransient(_ => new PostGreSqlDbConnection(StaticInfos.PostgreSqlConnectionString));
 //builder.Services.AddDbContext<API.DataAccess.ORM.MsSQLDataModels.NexKraftDbContext1>(options => options.UseSqlServer(StaticInfos.MsSqlConnectionString));
-builder.Services.AddDbContext<API.DataAccess.ORM.CodeFirst.NexKraftDbContextCF>(options => options.UseSqlServer(StaticInfos.MsSqlConnectionString));
+//builder.Services.AddDbContext<API.DataAccess.ORM.CodeFirst.NexKraftDbContextCF>(options => options.UseSqlServer(StaticInfos.MsSqlConnectionString));
+builder.Services.AddDbContext<API.DataAccess.ORM.CodeFirst.NexKraftDbContextCF>();
 // For Identity
 //builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 //    .AddEntityFrameworkStores<NexKraftDbContext>()

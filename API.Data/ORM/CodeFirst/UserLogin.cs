@@ -23,6 +23,6 @@ namespace API.DataAccess.ORM.CodeFirst
         public bool? IsActive { get; set; }
 
         public virtual Customer? Customer { get; set; }
-        public virtual List<UserRole>? UserRoles { get; set; }
+        //public virtual List<UserRole>? UserRoles { get; set; }
     }
 }

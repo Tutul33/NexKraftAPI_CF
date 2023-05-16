@@ -30,4 +30,8 @@
     <ProjectReference Include="..\API.Settings\API.Settings.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
