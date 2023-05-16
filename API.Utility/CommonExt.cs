@@ -40,6 +40,12 @@ namespace API.Utility
             catch (Exception) { }
             return decryptpwd;
         }
+        /// <summary>
+        /// Encrypt plain text
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="plainText"></param>
+        /// <returns></returns>
         public static string AesEncryptString(string key, string plainText)
         {
             byte[] iv = new byte[16];
@@ -68,6 +74,12 @@ namespace API.Utility
 
             return Convert.ToBase64String(array);
         }
+        /// <summary>
+        /// Decrypt encrypted key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="cipherText"></param>
+        /// <returns></returns>
         public static string AesDecryptString(string key, string cipherText)
         {
             byte[] iv = new byte[16];
