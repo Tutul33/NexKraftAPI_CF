@@ -15,51 +15,51 @@ namespace API.DataAccess.ORM.CodeFirst
         {
             Configuration = _Configuration;
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Customer>().HasData(
-                new Customer
-                {
+       // protected override void OnModelCreating(ModelBuilder modelBuilder)
+       // {
+       //     modelBuilder.Entity<Customer>().HasData(
+       //         new Customer
+       //         {
                    
-                }
-            );
-            modelBuilder.Entity<UserLogin>().HasData(
-                new UserLogin
-                {
+       //         }
+       //     );
+       //     modelBuilder.Entity<UserLogin>().HasData(
+       //         new UserLogin
+       //         {
 
-                }
-            );
-            modelBuilder.Entity<Role>().HasData(
-               new Role
-               {
+       //         }
+       //     );
+       //     modelBuilder.Entity<Role>().HasData(
+       //        new Role
+       //        {
 
-               }
-           );
-            modelBuilder.Entity<UserRole>().HasData(
-              new UserRole
-              {
+       //        }
+       //    );
+       //     modelBuilder.Entity<UserRole>().HasData(
+       //       new UserRole
+       //       {
 
-              }
-          );
-            modelBuilder.Entity<Module>().HasData(
-             new Module
-             {
+       //       }
+       //   );
+       //     modelBuilder.Entity<Module>().HasData(
+       //      new Module
+       //      {
 
-             }
-         );
-            modelBuilder.Entity<Menu>().HasData(
-            new Menu
-            {
+       //      }
+       //  );
+       //     modelBuilder.Entity<Menu>().HasData(
+       //     new Menu
+       //     {
 
-            }
-        );
-            modelBuilder.Entity<MenuPermission>().HasData(
-           new MenuPermission
-           {
+       //     }
+       // );
+       //     modelBuilder.Entity<MenuPermission>().HasData(
+       //    new MenuPermission
+       //    {
 
-           }
-       );
-        }
+       //    }
+       //);
+       // }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));

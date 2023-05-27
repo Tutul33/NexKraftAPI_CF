@@ -55,8 +55,9 @@ namespace API.Settings
             byte[]? file = null;
             try
             {
-                string filePath = StaticInfos.FileUploadPath + fileUploadedPath +"/"+ fileName;
-                file = File.ReadAllBytes(filePath);
+                //string filePath = StaticInfos.FileUploadPath + fileUploadedPath +"/"+ fileName;
+                string filePath1 = StaticInfos.WebRootPath + fileUploadedPath +"/"+ fileName;
+                file = File.ReadAllBytes(filePath1);
             }
             catch (Exception ex)
             {

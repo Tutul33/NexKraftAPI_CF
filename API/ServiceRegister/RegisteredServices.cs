@@ -19,6 +19,7 @@ namespace API.ServiceRegister
             //builder.Services.AddScoped<ICustomerServicesOld, CustomerServicesOld>();
             builder.Services.AddScoped<ILoginServices, LoginServices>();
             builder.Services.AddScoped<IModuleAndMenuServiceCommands, ModuleAndMenuServiceCommands>();
+            builder.Services.AddScoped<IModuleAndMenuServiceQueries, ModuleAndMenuServiceQueries>();
 
         }
     }
