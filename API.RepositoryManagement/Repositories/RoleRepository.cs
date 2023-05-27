@@ -2,6 +2,8 @@
 using API.DataAccess.ORM.CodeFirst;
 using API.RepositoryManagement.Base;
 using API.RepositoryManagement.Repositories.Interfaces;
+using API.ViewModel.ViewModels.Customers;
+using API.ViewModel.ViewModels.Roles;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -23,6 +25,25 @@ namespace API.RepositoryManagement.Repositories
             List<Role> list=new List<Role>();
             list = (await GetAllAsync()).ToList().Count() > 0 ? (await GetAllAsync()).ToList() : list;
             return list;
+        }
+        public async Task<Role?> GetRoleByID(int roleId)
+        {
+            return await GetByIdAsync(roleId);
+        }
+        public async Task<bool> DeleteRole(int id)
+        {
+            return Convert.ToBoolean(DeleteAsync(await GetByIdAsync(id)).IsCompleted);
+        }
+
+        public async Task<Role> CreateRole(vmRole data)
+        {
+            Role obj = new Role()
+            {
+                RoleName=data.RoleName,
+                Sequence=data.Sequence,
+                IsActive=true,
+            };
+            return await AddAsync(obj);
         }
     }
 }
