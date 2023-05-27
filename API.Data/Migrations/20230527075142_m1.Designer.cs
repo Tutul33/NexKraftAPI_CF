@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.DataAccess.Migrations
 {
     [DbContext(typeof(NexKraftDbContextCF))]
-    [Migration("20230514074704_v1")]
-    partial class v1
+    [Migration("20230527075142_m1")]
+    partial class m1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
