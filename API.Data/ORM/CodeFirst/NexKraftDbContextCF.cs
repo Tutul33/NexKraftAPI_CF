@@ -15,57 +15,20 @@ namespace API.DataAccess.ORM.CodeFirst
         {
             Configuration = _Configuration;
         }
-       // protected override void OnModelCreating(ModelBuilder modelBuilder)
-       // {
-       //     modelBuilder.Entity<Customer>().HasData(
-       //         new Customer
-       //         {
-                   
-       //         }
-       //     );
-       //     modelBuilder.Entity<UserLogin>().HasData(
-       //         new UserLogin
-       //         {
-
-       //         }
-       //     );
-       //     modelBuilder.Entity<Role>().HasData(
-       //        new Role
-       //        {
-
-       //        }
-       //    );
-       //     modelBuilder.Entity<UserRole>().HasData(
-       //       new UserRole
-       //       {
-
-       //       }
-       //   );
-       //     modelBuilder.Entity<Module>().HasData(
-       //      new Module
-       //      {
-
-       //      }
-       //  );
-       //     modelBuilder.Entity<Menu>().HasData(
-       //     new Menu
-       //     {
-
-       //     }
-       // );
-       //     modelBuilder.Entity<MenuPermission>().HasData(
-       //    new MenuPermission
-       //    {
-
-       //    }
-       //);
-       // }
+        /// <summary>
+        /// Set Seed data OR demo data
+        /// </summary>
+        /// <param name="modelBuilder"></param>
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             //options.UseSqlServer("Server=TUTULPC\\MSSQL_SRV_TUTUL;Database=NexKraftDB_CF;User Id=sa; Password=@Msi2023#;TrustServerCertificate=True");
         }
-        public virtual DbSet<Customer> Customers{get;set;}
+        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }

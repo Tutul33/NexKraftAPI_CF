@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace API.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class m1 : Migration
+    public partial class NexKraft_DB_1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -153,6 +155,73 @@ namespace API.DataAccess.Migrations
                         column: x => x.MenuId,
                         principalTable: "Menus",
                         principalColumn: "MenuId");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "CustomerId", "Address", "Country", "Dob", "Email", "FileExtension", "FilePath", "FirstName", "FullName", "IsActive", "LastName", "Phone" },
+                values: new object[] { 1, "Dhaka,Bangladesh", "", new DateTime(2057, 7, 28, 16, 15, 24, 628, DateTimeKind.Local).AddTicks(8645), "tutulcou@gmail.com", "jpg", "FB_IMG_1602836847801_20230430151425779.jpg", "Tutul", "Tutul Chakma", true, "Chakma", "01914570198" });
+
+            migrationBuilder.InsertData(
+                table: "Modules",
+                columns: new[] { "ModuleId", "Description", "IsActive", "ModuleColor", "ModuleIcon", "ModuleName", "ModulePath", "ModuleSequence" },
+                values: new object[,]
+                {
+                    { 1, "Dashboard", true, "", "fas fa-tachometer-alt", "Dashboard", "/", 1 },
+                    { 2, "User Management", true, "", "fa fa-user", "User Management", "/users", 2 },
+                    { 3, "Module Management", true, "", "fas fa-columns", "Module Management", "/modules", 4 },
+                    { 4, "Role Management", true, "", "fa fa-tasks", "Role", "/roles", 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "RoleId", "IsActive", "RoleName", "Sequence" },
+                values: new object[,]
+                {
+                    { 1, true, "SuperAdmin", 1 },
+                    { 2, true, "Admin", 1 },
+                    { 3, true, "User", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "UserRoles",
+                columns: new[] { "UserRoleId", "LoginId", "RoleId" },
+                values: new object[] { 1, 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Menus",
+                columns: new[] { "MenuId", "IsActive", "IsSubParent", "MenuIcon", "MenuName", "MenuPath", "MenuSequence", "ModuleId", "ParentId", "SubParentId" },
+                values: new object[,]
+                {
+                    { 1, true, false, "fas fa-tachometer-alt", "Home", "/", 1, 1, 0, 0 },
+                    { 2, true, false, "fa fa-user", "Users", "/users", 1, 2, 0, 0 },
+                    { 3, true, false, "fas fa-columns", "Modules", "/modules", 1, 3, 0, 0 },
+                    { 4, true, false, "fa fa-bars", "Menus", "/modules/menus", 2, 3, 3, 0 },
+                    { 5, true, false, "fa fa-lock", "Permissions", "/modules/permissions", 3, 3, 3, 0 },
+                    { 6, true, false, "fa fa-tasks", "Roles", "/roles", 1, 4, 0, 0 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "UserLogins",
+                columns: new[] { "LoginId", "CustomerId", "HashPassword", "IsActive", "Password", "UserName" },
+                values: new object[] { 1, 1, "MTIzNDU2", true, "123456", "tutulcou@gmail.com" });
+
+            migrationBuilder.InsertData(
+                table: "MenuPermissions",
+                columns: new[] { "PermissionId", "CanCreate", "CanDelete", "CanEdit", "CanView", "IsActive", "MenuId", "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { 1, true, true, true, true, true, 1, 1, 0 },
+                    { 2, true, true, true, true, true, 2, 1, 0 },
+                    { 3, true, true, true, true, true, 3, 1, 0 },
+                    { 4, true, true, true, true, true, 4, 1, 0 },
+                    { 5, true, true, true, true, true, 1, 2, 0 },
+                    { 6, true, true, true, true, true, 2, 2, 0 },
+                    { 7, true, true, true, true, true, 3, 2, 0 },
+                    { 8, false, false, false, false, true, 1, 3, 0 },
+                    { 9, false, false, false, false, true, 2, 3, 0 },
+                    { 10, true, true, true, true, true, 5, 1, 0 },
+                    { 11, true, true, true, true, true, 6, 1, 0 }
                 });
 
             migrationBuilder.CreateIndex(
