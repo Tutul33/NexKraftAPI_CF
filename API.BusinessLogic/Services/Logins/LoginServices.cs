@@ -93,9 +93,12 @@ namespace API.BusinessLogic.Services.Logins
             try
             {
                 menuList = await GetMenus();
-                modules = (from ml in await _unitOfWork.ModuleRepository.GetModuleList()
-                           join mn in await _unitOfWork.MenuRepository.GetMenuList() on ml.ModuleId equals mn.ModuleId
-                           join mp in await _unitOfWork.MenuPermissionRepository.GetMenuPermissionList() on mn?.MenuId equals mp?.MenuId
+                var moduleList = (await _unitOfWork.ModuleRepository.GetModuleList()).ToList().OrderBy(x=>x.ModuleSequence);
+                var menusList = await _unitOfWork.MenuRepository.GetMenuList();
+                var menuPermissionList = await _unitOfWork.MenuPermissionRepository.GetMenuPermissionList();
+                modules = (from ml in moduleList
+                           join mn in menusList on ml.ModuleId equals mn.ModuleId
+                           join mp in menuPermissionList on mn?.MenuId equals mp?.MenuId
                            into tmp
                            from mp in tmp.DefaultIfEmpty()
                            where

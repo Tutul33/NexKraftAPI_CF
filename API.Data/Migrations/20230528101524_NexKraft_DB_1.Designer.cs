@@ -4,6 +4,7 @@ using API.DataAccess.ORM.CodeFirst;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.DataAccess.Migrations
 {
     [DbContext(typeof(NexKraftDbContextCF))]
-    partial class NexKraftDbContextCFModelSnapshot : ModelSnapshot
+    [Migration("20230528101524_NexKraft_DB_1")]
+    partial class NexKraft_DB_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

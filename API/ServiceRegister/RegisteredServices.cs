@@ -1,9 +1,11 @@
 ﻿using API.BusinessLogic.Interface.Customer;
 using API.BusinessLogic.Interface.ILogin;
 using API.BusinessLogic.Interface.IModuleAndMenu;
+using API.BusinessLogic.Interface.IRole;
 using API.BusinessLogic.Services.Customers;
 using API.BusinessLogic.Services.Logins;
 using API.BusinessLogic.Services.ModuleAndMenu;
+using API.BusinessLogic.Services.Roles;
 
 namespace API.ServiceRegister
 {
@@ -18,7 +20,12 @@ namespace API.ServiceRegister
             builder.Services.AddScoped<ICustomerServices, CustomerServices>();
             //builder.Services.AddScoped<ICustomerServicesOld, CustomerServicesOld>();
             builder.Services.AddScoped<ILoginServices, LoginServices>();
+
             builder.Services.AddScoped<IModuleAndMenuServiceCommands, ModuleAndMenuServiceCommands>();
+            builder.Services.AddScoped<IModuleAndMenuServiceQueries, ModuleAndMenuServiceQueries>();
+
+            builder.Services.AddScoped<IRoleCommands, RoleServiceCommands>();
+            builder.Services.AddScoped<IRoleQueries, RoleServiceQueries>();
 
         }
        
