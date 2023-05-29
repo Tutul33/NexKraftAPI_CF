@@ -10,6 +10,11 @@ namespace API.Utility
 {
     public static class CommonExt
     {
+        /// <summary>
+        /// Encrypt pain text using UTF8
+        /// </summary>
+        /// <param name="inputString"></param>
+        /// <returns></returns>
         public static string Encryptdata(string inputString)
         {
             string strmsg = string.Empty;
@@ -23,7 +28,11 @@ namespace API.Utility
 
             return strmsg;
         }
-
+        /// <summary>
+        /// Decrypt encrypted data using UTF8 
+        /// </summary>
+        /// <param name="inputString"></param>
+        /// <returns></returns>
         public static string Decryptdata(string inputString)
         {
             string decryptpwd = string.Empty;
@@ -41,7 +50,7 @@ namespace API.Utility
             return decryptpwd;
         }
         /// <summary>
-        /// Encrypt plain text
+        /// Encrypt plain text string AES
         /// </summary>
         /// <param name="key"></param>
         /// <param name="plainText"></param>
@@ -75,7 +84,7 @@ namespace API.Utility
             return Convert.ToBase64String(array);
         }
         /// <summary>
-        /// Decrypt encrypted key
+        /// Decrypt encrypted key using AES
         /// </summary>
         /// <param name="key"></param>
         /// <param name="cipherText"></param>

@@ -21,5 +21,6 @@ namespace API.ServiceRegister
             builder.Services.AddScoped<IModuleAndMenuServiceCommands, ModuleAndMenuServiceCommands>();
 
         }
+       
     }
 }
