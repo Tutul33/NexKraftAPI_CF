@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.DataAccess.Migrations
 {
     [DbContext(typeof(NexKraftDbContextCF))]
-    [Migration("20230528101524_NexKraft_DB_1")]
-    partial class NexKraft_DB_1
+    [Migration("20230529050339_db1")]
+    partial class db1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,7 +76,7 @@ namespace API.DataAccess.Migrations
                             CustomerId = 1,
                             Address = "Dhaka,Bangladesh",
                             Country = "",
-                            Dob = new DateTime(2057, 7, 28, 16, 15, 24, 628, DateTimeKind.Local).AddTicks(8645),
+                            Dob = new DateTime(2057, 7, 29, 11, 3, 39, 779, DateTimeKind.Local).AddTicks(2060),
                             Email = "tutulcou@gmail.com",
                             FileExtension = "jpg",
                             FilePath = "FB_IMG_1602836847801_20230430151425779.jpg",

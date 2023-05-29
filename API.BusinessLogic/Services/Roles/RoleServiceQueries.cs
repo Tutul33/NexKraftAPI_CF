@@ -3,6 +3,7 @@ using API.DataAccess.ORM.CodeFirst;
 using API.RepositoryManagement.UnityOfWork.Interfaces;
 using API.Settings;
 using API.ViewModel.ViewModels.Common;
+using API.ViewModel.ViewModels.Customers;
 using API.ViewModel.ViewModels.Roles;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace API.BusinessLogic.Services.Roles
             this._unitOfWork = _unitOfWork;
         }
         #region Queries
-        public async Task<object?> GetRoleList(vmRole role)
+        public async Task<object?> GetRoleList(CustomerData role)
         {
             object list = new object(); int total = 0;
             CommonData common = new CommonData()
@@ -52,7 +53,7 @@ namespace API.BusinessLogic.Services.Roles
                         {
                             //Role
                             roleId = r.RoleId,
-                            rolename = r.RoleName,
+                            roleName = r.RoleName,
                             isActive = r.IsActive,
                             isDeleting = false,
                             total

@@ -2,6 +2,7 @@
 using API.BusinessLogic.Interface.IRole;
 using API.DataAccess.ORM.CodeFirst;
 using API.Filters;
+using API.ViewModel.ViewModels.Customers;
 using API.ViewModel.ViewModels.Roles;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,8 +25,8 @@ namespace API.Controllers
             this.qrySerivce = qrySerivce;
         }
 
-        [HttpGet("[action]"), Authorizations]
-        public async Task<object> GetRoleList([FromQuery] vmRole role)
+        [HttpGet("[action]"),Authorizations]
+        public async Task<object> GetRoleList([FromQuery] CustomerData role)
         {
             object result = null;
             try

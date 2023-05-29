@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace API.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class NexKraft_DB_1 : Migration
+    public partial class db1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -160,7 +160,7 @@ namespace API.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "Customers",
                 columns: new[] { "CustomerId", "Address", "Country", "Dob", "Email", "FileExtension", "FilePath", "FirstName", "FullName", "IsActive", "LastName", "Phone" },
-                values: new object[] { 1, "Dhaka,Bangladesh", "", new DateTime(2057, 7, 28, 16, 15, 24, 628, DateTimeKind.Local).AddTicks(8645), "tutulcou@gmail.com", "jpg", "FB_IMG_1602836847801_20230430151425779.jpg", "Tutul", "Tutul Chakma", true, "Chakma", "01914570198" });
+                values: new object[] { 1, "Dhaka,Bangladesh", "", new DateTime(2057, 7, 29, 11, 3, 39, 779, DateTimeKind.Local).AddTicks(2060), "tutulcou@gmail.com", "jpg", "FB_IMG_1602836847801_20230430151425779.jpg", "Tutul", "Tutul Chakma", true, "Chakma", "01914570198" });
 
             migrationBuilder.InsertData(
                 table: "Modules",
