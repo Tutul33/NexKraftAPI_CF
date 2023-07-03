@@ -4,6 +4,7 @@ using API.RepositoryManagement.UnityOfWork;
 using API.ServiceRegister;
 using API.Settings;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 //using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -62,6 +63,9 @@ builder.Services.AddResponseCaching(options =>
     //For example, /page1 and /Page1 are stored separately.
     options.UseCaseSensitivePaths = true;
 });
+//Register AutoMapper
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddControllersWithViews();
 //gRPCTesting.checkGrpc();
 //RegisterWhtlToX.RegisterWKHTMLtoX(builder);
 //Register All services
@@ -107,6 +111,7 @@ app.MapControllers();
 
 if (app.Environment.IsProduction())
 {
+    //In Production mode
     //Urls
     app.Urls.Add("http://localhost:5208");
     app.Urls.Add("http://172.28.80.1:5208");
@@ -116,11 +121,30 @@ if (app.Environment.IsProduction())
     options.DefaultFileNames.Add("/index.html");
     app.UseDefaultFiles(options);
 
+    //Uncomment below file to get access to static files outside of wwwroot
+    //var currentDirectory = "F:\\NexKraft";
+    //app.UseStaticFiles(new StaticFileOptions()
+    //{
+    //    FileProvider = new PhysicalFileProvider(currentDirectory),
+    //    RequestPath = new PathString("/resources")
+    //});  
+
     //Uncomment below code for-- static files, such as HTML, CSS, images, and JavaScript, are assets an ASP.NET Core app serves directly to clients by default.
     app.UseStaticFiles();
 
     //Uncomment below code for--Enable all static file middleware(except directory browsing) for the current request path in the current directory.
     app.UseFileServer(enableDirectoryBrowsing: false);
+}
+else
+{
+    //In development mode
+    //Uncomment below file to get access to static files outside of wwwroot
+    //var currentDirectory = "F:\\NexKraft";
+    //app.UseStaticFiles(new StaticFileOptions()
+    //{
+    //    FileProvider = new PhysicalFileProvider(currentDirectory),
+    //    RequestPath = new PathString("/resources")
+    //});   
 }
 
 

@@ -2,6 +2,7 @@
 using API.DataAccess.ORM.CodeFirst;
 using API.RepositoryManagement.UnityOfWork.Interfaces;
 using API.ViewModel.ViewModels.Roles;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,11 @@ namespace API.BusinessLogic.Services.Roles
 {
     public class RoleServiceCommands : IRoleCommands
     {
-        private readonly IUnitOfWork _unitOfWork;
-        public RoleServiceCommands(IUnitOfWork _unitOfWork)
+        private readonly IUnitOfWork _unitOfWork; private readonly IMapper _mapper;
+        public RoleServiceCommands(IUnitOfWork _unitOfWork, IMapper mapper)
         {
             this._unitOfWork = _unitOfWork;
+            this._mapper = mapper;
         }
         #region Commands
         public async Task<object?> AddRole(vmRole role)
@@ -23,7 +25,13 @@ namespace API.BusinessLogic.Services.Roles
             string message = string.Empty; bool resstate = false; 
             try
             {
-                var objRole = await _unitOfWork.RoleRepository.CreateRole(role);
+                Role objRole = new Role
+                {
+                    RoleName = role.RoleName,
+                    Sequence = role.Sequence,
+                    IsActive=true
+                };
+                var objCreate = await _unitOfWork.RoleRepository.CreateRole(objRole);
                 await _unitOfWork.CompleteAsync();
 
                 message = "Created Successfully.";

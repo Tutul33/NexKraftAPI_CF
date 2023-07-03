@@ -146,7 +146,9 @@ namespace API.BusinessLogic.Services.Customers
         public async Task<object?> CreateCustomer(CustomerModel objCtomer, List<AttachedFile> files)
         {
 
-            string message = string.Empty; bool resstate = false; Customer objCustomer = new(); string fileName = "", fileExt = ""; int loginId = 0;
+            string message = string.Empty; bool resstate = false;
+            Customer objCustomer = new(); string fileName = "", fileExt = ""; 
+            int loginId = 0,roleId=0;string roleName = "";
             try
             {
                 fileName = files.Count > 0 ? files[0].FileName : "";
@@ -170,6 +172,8 @@ namespace API.BusinessLogic.Services.Customers
                         var ulogin = await _unitOfWork.UserRoleRepository.CreateUserRole(uRole);
                         await _unitOfWork.CompleteAsync();
                         loginId = login.LoginId;
+                        roleId=uRole.RoleId;
+                        roleName = (await _unitOfWork.RoleRepository.GetRoleByID(uRole.RoleId))?.RoleName;
                         foreach (var file in files)
                         {
                             Common.FileSave(file, "/uploadedFile/ProfilePic");
@@ -198,6 +202,8 @@ namespace API.BusinessLogic.Services.Customers
                 fullName = objCustomer?.FullName,
                 email = objCustomer?.Email,
                 phone = objCustomer?.Phone,
+                roleId,
+                roleName,
                 loginId
             };
         }

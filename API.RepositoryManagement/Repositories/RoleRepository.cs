@@ -35,15 +35,9 @@ namespace API.RepositoryManagement.Repositories
             return Convert.ToBoolean(DeleteAsync(await GetByIdAsync(id)).IsCompleted);
         }
 
-        public async Task<Role> CreateRole(vmRole data)
+        public async Task<Role> CreateRole(Role data)
         {
-            Role obj = new Role()
-            {
-                RoleName=data.RoleName,
-                Sequence=data.Sequence,
-                IsActive=true,
-            };
-            return await AddAsync(obj);
+            return await AddAsync(data);
         }
     }
 }

@@ -57,11 +57,22 @@ namespace API.Settings
             {
                 //string filePath = StaticInfos.FileUploadPath + fileUploadedPath +"/"+ fileName;
                 string filePath1 = StaticInfos.WebRootPath + fileUploadedPath +"/"+ fileName;
-                file = File.ReadAllBytes(filePath1);
+                if (File.Exists(filePath1))
+                {
+                    file = File.ReadAllBytes(filePath1);
+                }
+                else
+                {
+                    string defaultFilePath = StaticInfos.WebRootPath + "/uploadedFile/DefaultPic/noUserLogo.png";
+
+                    file = File.ReadAllBytes(defaultFilePath);
+                }
             }
             catch (Exception ex)
             {
                 ex.ToString();
+                string filePath1 = StaticInfos.WebRootPath + "/uploadedFile/DefaultPic/noUserLogo.png";
+                file = File.ReadAllBytes(filePath1);
             }
             return file;
         }

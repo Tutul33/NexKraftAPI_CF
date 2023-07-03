@@ -15,6 +15,6 @@ namespace API.RepositoryManagement.Repositories.Interfaces
         Task<List<Role>> GetRoleList();
         Task<Role?> GetRoleByID(int roleId);
         Task<bool> DeleteRole(int id);
-        Task<Role> CreateRole(vmRole data);
+        Task<Role> CreateRole(Role data);
     }
 }

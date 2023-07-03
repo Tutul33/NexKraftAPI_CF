@@ -14,7 +14,7 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger", //comment this for index.html
-      //"launchUrl": "index.html",//Uncomment this for index.html
+      //"launchUrl": "resources/index.html",//Uncomment this for index.html
       "applicationUrl": "http://localhost:5207",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
