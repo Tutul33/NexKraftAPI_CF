@@ -1,4 +1,6 @@
 ﻿using API.BusinessLogic.Interface.ILogin;
+using API.ServiceRegister;
+using API.Utility;
 using API.ViewModel.ViewModels.Customers;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -28,10 +30,12 @@ namespace API.Controllers
                 {
                     result = new { message = "User not foud.", resstate = false };
                 }
+                Logs.WriteLogFile("Success");
             }
             catch (Exception ex)
             {
                 ex.ToString();
+                Logs.WriteLogFile(ex.ToString());
             }
             return result;
         }

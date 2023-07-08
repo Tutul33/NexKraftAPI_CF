@@ -28,5 +28,6 @@ namespace API.ServiceRegister
             builder.Services.AddScoped<IRoleQueries, RoleServiceQueries>();
 
         }
+       
     }
 }

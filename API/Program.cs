@@ -63,14 +63,13 @@ builder.Services.AddResponseCaching(options =>
     //For example, /page1 and /Page1 are stored separately.
     options.UseCaseSensitivePaths = true;
 });
-//SignalR
-builder.Services.AddSignalR();
 
 //Register All services
 RegisteredServices.Register(builder);
 
 
 var app = builder.Build();
+
 //set web r0ot path
 StaticInfos.WebRootPath=app.Environment.WebRootPath;
 StaticInfos.ContentRootPath=app.Environment.ContentRootPath;
@@ -111,6 +110,9 @@ app.MapControllers();
 
 if (app.Environment.IsProduction())
 {
+    //Urls
+    app.Urls.Add("http://localhost:5208");
+    app.Urls.Add("http://172.28.80.1:5208");
     //Uncomment below for index.html
     DefaultFilesOptions options = new DefaultFilesOptions();
     options.DefaultFileNames.Clear();
