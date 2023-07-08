@@ -2,7 +2,7 @@
 
 namespace API.signalr_hub
 {
-    public class MessageHub : Hub<IMessageHubClient>
+    public class BroadcastHub : Hub<IMessageHubClient>
     {
     }
 }

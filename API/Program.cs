@@ -102,7 +102,7 @@ app.Use(async (context, next) =>
 });
 app.UseEndpoints(routes =>
 {
-    routes.MapHub<MessageHub>("/api/notify");
+    routes.MapHub<BroadcastHub>("/api/notify");
 });
 app.UseAuthentication();
 app.UseAuthorization();

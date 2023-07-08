@@ -2,5 +2,6 @@
 {
     public interface IMessageHubClient
     {
+        Task BroadcastMessage(string jsonString);
     }
 }
