@@ -4,6 +4,7 @@ using API.RepositoryManagement.UnityOfWork;
 using API.ServiceRegister;
 using API.Settings;
 using Microsoft.EntityFrameworkCore;
+using API.signalr_hub;
 //using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -62,6 +63,8 @@ builder.Services.AddResponseCaching(options =>
     //For example, /page1 and /Page1 are stored separately.
     options.UseCaseSensitivePaths = true;
 });
+//SignalR
+builder.Services.AddSignalR();
 
 //Register All services
 RegisteredServices.Register(builder);
@@ -97,7 +100,10 @@ app.Use(async (context, next) =>
 
     await next();
 });
-
+app.UseEndpoints(routes =>
+{
+    routes.MapHub<MessageHub>("/api/notify");
+});
 app.UseAuthentication();
 app.UseAuthorization();
 
