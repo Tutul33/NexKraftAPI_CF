@@ -63,7 +63,7 @@ builder.Services.AddResponseCaching(options =>
     //For example, /page1 and /Page1 are stored separately.
     options.UseCaseSensitivePaths = true;
 });
-
+builder.Services.AddSignalRCore();
 //Register All services
 RegisteredServices.Register(builder);
 
@@ -99,12 +99,14 @@ app.Use(async (context, next) =>
 
     await next();
 });
+app.UseAuthorization();
+
 app.UseEndpoints(routes =>
 {
     routes.MapHub<BroadcastHub>("/api/notify");
 });
 app.UseAuthentication();
-app.UseAuthorization();
+
 
 app.MapControllers();
 
