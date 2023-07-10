@@ -1,5 +1,5 @@
 ﻿//using API.gRPCservice;
-using Grpc.Net.Client;
+//using Grpc.Net.Client;
 
 namespace API.ServiceRegister
 {
