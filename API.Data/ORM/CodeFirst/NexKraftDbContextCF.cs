@@ -35,5 +35,6 @@ namespace API.DataAccess.ORM.CodeFirst
         public virtual DbSet<Module> Modules { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<MenuPermission> MenuPermissions { get; set; }
+        public virtual DbSet<Chat> Chats { get; set; }
     }
 }

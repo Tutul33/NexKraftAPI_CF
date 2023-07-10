@@ -22,6 +22,49 @@ namespace API.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("API.DataAccess.ORM.CodeFirst.Chat", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("fromUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("groupId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("mediaExt")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("mediaUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("messages")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("toUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Chats");
+                });
+
             modelBuilder.Entity("API.DataAccess.ORM.CodeFirst.Customer", b =>
                 {
                     b.Property<int>("CustomerId")
@@ -73,7 +116,7 @@ namespace API.DataAccess.Migrations
                             CustomerId = 1,
                             Address = "Dhaka,Bangladesh",
                             Country = "",
-                            Dob = new DateTime(2057, 7, 29, 11, 3, 39, 779, DateTimeKind.Local).AddTicks(2060),
+                            Dob = new DateTime(2057, 9, 10, 14, 26, 51, 758, DateTimeKind.Local).AddTicks(8703),
                             Email = "tutulcou@gmail.com",
                             FileExtension = "jpg",
                             FilePath = "FB_IMG_1602836847801_20230430151425779.jpg",

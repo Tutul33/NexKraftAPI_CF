@@ -8,11 +8,32 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace API.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class db1 : Migration
+    public partial class m1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Chats",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    groupId = table.Column<int>(type: "int", nullable: false),
+                    messages = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    mediaUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    mediaExt = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    fromUserId = table.Column<int>(type: "int", nullable: false),
+                    toUserId = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    isActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Chats", x => x.id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Customers",
                 columns: table => new
@@ -160,7 +181,7 @@ namespace API.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "Customers",
                 columns: new[] { "CustomerId", "Address", "Country", "Dob", "Email", "FileExtension", "FilePath", "FirstName", "FullName", "IsActive", "LastName", "Phone" },
-                values: new object[] { 1, "Dhaka,Bangladesh", "", new DateTime(2057, 7, 29, 11, 3, 39, 779, DateTimeKind.Local).AddTicks(2060), "tutulcou@gmail.com", "jpg", "FB_IMG_1602836847801_20230430151425779.jpg", "Tutul", "Tutul Chakma", true, "Chakma", "01914570198" });
+                values: new object[] { 1, "Dhaka,Bangladesh", "", new DateTime(2057, 9, 10, 14, 26, 51, 758, DateTimeKind.Local).AddTicks(8703), "tutulcou@gmail.com", "jpg", "FB_IMG_1602836847801_20230430151425779.jpg", "Tutul", "Tutul Chakma", true, "Chakma", "01914570198" });
 
             migrationBuilder.InsertData(
                 table: "Modules",
@@ -243,6 +264,9 @@ namespace API.DataAccess.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Chats");
+
             migrationBuilder.DropTable(
                 name: "MenuPermissions");
 

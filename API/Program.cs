@@ -4,6 +4,7 @@ using API.RepositoryManagement.UnityOfWork;
 using API.ServiceRegister;
 using API.Settings;
 using Microsoft.EntityFrameworkCore;
+using API.signalr_hub;
 //using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -62,6 +63,7 @@ builder.Services.AddResponseCaching(options =>
     //For example, /page1 and /Page1 are stored separately.
     options.UseCaseSensitivePaths = true;
 });
+builder.Services.AddSignalR();
 //gRPCTesting.checkGrpc();
 //RegisterWhtlToX.RegisterWKHTMLtoX(builder);
 //Register All services
@@ -104,6 +106,7 @@ app.UseAuthorization();
 app.UseEndpoints(routes =>
 {
     routes.MapHub<BroadcastHub>("/api/notify");
+    routes.MapHub<ChatHub>("/api/chat");
 });
 app.UseAuthentication();
 

@@ -14,10 +14,10 @@ namespace API.BusinessLogic.Services.Roles
     public class RoleServiceCommands : IRoleCommands
     {
         private readonly IUnitOfWork _unitOfWork; private readonly IMapper _mapper;
-        public RoleServiceCommands(IUnitOfWork _unitOfWork, IMapper mapper)
+        public RoleServiceCommands(IUnitOfWork _unitOfWork)//, IMapper mapper
         {
             this._unitOfWork = _unitOfWork;
-            this._mapper = mapper;
+            //this._mapper = mapper;
         }
         #region Commands
         public async Task<object?> AddRole(vmRole role)

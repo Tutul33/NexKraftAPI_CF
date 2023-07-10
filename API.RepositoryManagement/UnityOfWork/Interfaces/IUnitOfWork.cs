@@ -18,6 +18,7 @@ namespace API.RepositoryManagement.UnityOfWork.Interfaces
         IMenuRepository MenuRepository { get; }
         IRoleRepository RoleRepository { get; }
         IUserRoleRepository UserRoleRepository { get; }
+        IChatRepository ChatRepository { get; }
         #endregion
 
         #region Methods

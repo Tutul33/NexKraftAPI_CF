@@ -30,6 +30,8 @@ namespace API.RepositoryManagement.UnityOfWork
         public IRoleRepository RoleRepository => _roleRepository ?? (_roleRepository = new RoleRepository(_dbContext));
         private UserRoleRepository _userRoleRepository;
         public IUserRoleRepository UserRoleRepository => _userRoleRepository ?? (_userRoleRepository = new UserRoleRepository(_dbContext));
+        private ChatRepository _chatRepository;
+        public IChatRepository ChatRepository => _chatRepository ?? (_chatRepository = new ChatRepository(_dbContext));
         #endregion
 
         #region Readonlys

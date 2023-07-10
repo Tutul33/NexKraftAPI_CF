@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\uploadedFile\DefaultPic\" />
+    <Folder Include="wwwroot\uploadedFile\ChatFiles\" />
   </ItemGroup>
 
 </Project>
